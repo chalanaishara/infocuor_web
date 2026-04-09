@@ -1,9 +1,10 @@
 import User from "../models/user.js";
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 export function createUser(req,res){
 
-    const hashedPassword=bcrypt.hashSync(req.body.hashedPassword,10)
+    const hashedPassword=bcrypt.hashSync(req.body.Password,10)
 
     const user=new User({
         fullName:req.body.fullName,
@@ -32,7 +33,7 @@ user.save().then(
 
 export function loginUser(req,res){
 
-    const registrationNumber=req.body.registrationNumber
+    const registrationNumber=req.body.registrationNumber;
     const password=req.body.password
 
     User.findOne({registrationNumber:registrationNumber}).then(
@@ -60,7 +61,7 @@ export function loginUser(req,res){
                     res.json({
                         message:"login successful",
                         token:token
-                    })
+                    });
                 }
                 else{
                 res.status(404).json({
@@ -69,5 +70,9 @@ export function loginUser(req,res){
             }        
                 }
             }
-        )
+        ).catch(err=>{
+            res.status(500).json({
+                 message:"server error"
+                });
+        });
         }
