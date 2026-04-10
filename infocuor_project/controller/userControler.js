@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 
 export function createUser(req,res){
 
-    const hashedPassword=bcrypt.hashSync(req.body.Password,10)
+   const hashedPassword = bcrypt.hashSync(req.body.password, 10);
 
     const user=new User({
         fullName:req.body.fullName,
@@ -60,7 +60,7 @@ export function loginUser(req,res){
                     
                     res.json({
                         message:"login successful",
-                        token:token
+                       // token:token
                     });
                 }
                 else{
