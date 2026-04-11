@@ -1,8 +1,16 @@
+import dotenv from "dotenv";
+dotenv.config();
 import express from 'express';
 import userRouter from './route/userRouter.js';
 import eventRouter from './route/eventRouter.js';
-import bookingRouter from './route/bookingRouter.js';
+//import bookingRouter from './route/bookingRouter.js';
 import mongoose from 'mongoose';
+//import router from './route/bookingNormalRouter.js';
+import bookingRouter from './route/bookingRouter.js';
+import bookingNormalRouter from './route/bookingNormalRouter.js';
+//import BookingNormal from "../models/bookingNormal.js";
+
+
 
 const app=express();
 
@@ -12,11 +20,13 @@ mongoose.connect("mongodb+srv://chalanaishara563_db_user:123@web.8unhd4n.mongodb
     console.log("connected to the database")
 }).catch(()=>{
     console.log("connection field")
+    
 })
 
-app.use("/users",userRouter)
-app.use("/events",eventRouter)
-app.use("/api/bookings",bookingRouter )
+app.use("/users", userRouter);
+app.use("/events", eventRouter);
+app.use("/api/bookings", bookingRouter);
+app.use("/api/booking-normal", bookingNormalRouter);
 
 app.listen(5000,()=>{
     console.log("server is running on port 5000");
