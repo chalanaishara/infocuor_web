@@ -9,6 +9,8 @@ import mongoose from 'mongoose';
 import bookingRouter from './route/bookingRouter.js';
 import bookingNormalRouter from './route/bookingNormalRouter.js';
 //import BookingNormal from "../models/bookingNormal.js";
+import cors from "cors";
+
 
 
 
@@ -22,11 +24,13 @@ mongoose.connect("mongodb+srv://chalanaishara563_db_user:123@web.8unhd4n.mongodb
     console.log("connection field")
     
 })
+app.use(cors());
 
 app.use("/users", userRouter);
 app.use("/events", eventRouter);
 app.use("/api/bookings", bookingRouter);
-app.use("/api/booking-normal", bookingNormalRouter);
+app.use("/api/normal-booking", bookingNormalRouter);
+
 
 app.listen(5000,()=>{
     console.log("server is running on port 5000");
