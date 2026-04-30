@@ -4,7 +4,7 @@ import Booking from "../models/booking.js";
 export function createBooking(req, res) {
 
     const { sessionType, date, timeSlot } = req.body;
-    const userId = req.user.id;
+    const userId = "123456";
 
     // ❗ Check overlapping bookings
     Booking.findOne({ date, timeSlot }).then((existing) => {

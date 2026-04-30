@@ -6,6 +6,6 @@ const bookingRouter=express.Router();
 
 bookingRouter.post("/",  createBooking);
 bookingRouter.get("/", getUserBookings);
-bookingRouter.delete("/id", cancelBooking);
+bookingRouter.delete("/:id", cancelBooking);
 
 export default bookingRouter
