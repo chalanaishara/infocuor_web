@@ -3,10 +3,9 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
 export function createUser(req,res){
-//comment for branch
+
    const hashedPassword = bcrypt.hashSync(req.body.password, 10);
-//
-//
+//comments
     const user=new User({
         fullName:req.body.fullName,
         faculty:req.body.faculty,
