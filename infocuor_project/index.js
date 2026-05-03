@@ -16,12 +16,11 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const MONGO_URL =
-  "mongodb+srv://chalanaishara563_db_user:123@web.8unhd4n.mongodb.net/infocuor?retryWrites=true&w=majority";
+
 
 const startServer = async () => {
   try {
-    await mongoose.connect(MONGO_URL);
+    await mongoose.connect(process.env.MONGO_URL);
 
     console.log("connected to database");
 

@@ -10,6 +10,7 @@ export const createBooking = async (req, res) => {
       event,
       email,
       contactNumber,
+      user: req.user.id, 
       
     });
 
